@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./assets/css/tailwind.css";
 import App from "./App";
+import Login from "./Components/login";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
