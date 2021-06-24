@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -11,7 +11,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  //   plugins: ['react'],
 
   rules: {
     'jsx-a11y/label-has-associated-control': [
@@ -44,6 +44,12 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-unused-vars': 'off',
     'global-require': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+      },
+    ],
   },
   settings: {
     'import/resolver': {
