@@ -1,5 +1,5 @@
-import { LockClosedIcon } from "@heroicons/react/solid";
-import logo from "./logo.svg";
+import { LockClosedIcon } from '@heroicons/react/solid';
+import logo from './logo.svg';
 
 function App() {
   return (
