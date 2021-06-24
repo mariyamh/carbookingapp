@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./ --ext .js ",
     "lint:fix": "eslint ./ --fix=true",
-    "format": "prettier -w .",
+    "format": "prettier ./src",
     "prepare": "husky install",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

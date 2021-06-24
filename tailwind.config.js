@@ -10,16 +10,16 @@ module.exports = {
         blue: colors.lightBlue,
         red: colors.rose,
         pink: colors.fuchsia,
-        green: colors.green,
+        green: colors.green
       },
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-      },
-    },
+        serif: ['Merriweather', 'serif']
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };

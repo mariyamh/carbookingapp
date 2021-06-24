@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Switch, Route } from 'react-router';
 import './assets/css/tailwind.css';
 import App from './App';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './components/login';
+import Register from './components/register';
 import ResetPassword from './components/ResetPassword';
 import reportWebVitals from './reportWebVitals';
 
@@ -19,7 +19,7 @@ ReactDOM.render(
       </Switch>
     </Router>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

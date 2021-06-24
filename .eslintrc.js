@@ -1,41 +1,45 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended'
+  ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  //   plugins: ['react'],
+  plugins: ['prettier'],
 
   rules: {
     'jsx-a11y/label-has-associated-control': [
       'error',
       {
         required: {
-          some: ['nesting', 'id'],
-        },
-      },
+          some: ['nesting', 'id']
+        }
+      }
     ],
     'jsx-a11y/label-has-for': [
       'error',
       {
         required: {
-          some: ['nesting', 'id'],
-        },
-      },
+          some: ['nesting', 'id']
+        }
+      }
     ],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
         components: ['Link'],
-        specialLink: ['to'],
-      },
+        specialLink: ['to']
+      }
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/jsx-uses-react': 'off',
@@ -47,16 +51,16 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        singleQuote: true,
-      },
-    ],
+        singleQuote: true
+      }
+    ]
   },
   settings: {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['node_modules', 'src/', './'],
-      },
-    },
-  },
+        moduleDirectory: ['node_modules', 'src/', './']
+      }
+    }
+  }
 };
