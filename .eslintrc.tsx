@@ -6,7 +6,9 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -15,7 +17,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['prettier'],
+  plugins: ['prettier', '@typescript-eslint', 'react-hooks'],
 
   rules: {
     'jsx-a11y/label-has-associated-control': [
@@ -45,15 +47,25 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-undef': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx' ,] }],
     'no-unused-vars': 'off',
     'global-require': 'off',
+    'no-use-before-define': 'off',
     'prettier/prettier': [
       'error',
       {
         singleQuote: true
       }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
     ]
+      
   },
   settings: {
     'import/resolver': {

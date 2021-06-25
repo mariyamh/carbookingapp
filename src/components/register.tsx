@@ -1,4 +1,6 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
   return (
@@ -60,6 +62,12 @@ export default function Register() {
                 placeholder="Password"
               />
             </div>
+            <div className="flex items-center">
+              Already Account  ? Login
+             <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">( here )</Link>
+           
+            </div>
+      
           </div>
           <div>
             <button
