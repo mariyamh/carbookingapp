@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 
 // components
 
@@ -7,6 +8,16 @@ import CardPageVisits from "../../components/Cards/CardPageVisits";
 import CardSocialTraffic from "../../components/Cards/CardSocialTraffic";
 
 export default function Dashboard() {
+  const history = useHistory()
+  useEffect(() => {
+    if(localStorage.getItem('user')){
+      history.push('dashboard')
+    }
+    else{
+        history.push('login')
+    }
+   
+  }, [history])
   return (
     <>
    
