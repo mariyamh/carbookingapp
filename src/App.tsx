@@ -1,46 +1,40 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import dashboard from './components/dashboard';
-import Login from './components/login';
-import Register from './components/register';
-import ResetPassword from './components/ResetPassword';
-import ProtectedRoute from './components/protectedRoutes';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./assets/css/tailwind.css";
 
-function App() {
-  const isAuthenticated= localStorage.getItem('user')
-  return (
-    <div>
-    <Switch>
+// layouts
+import Admin from "./layouts/admin";
+import Auth from "./layouts/Auth";
 
-      {/* If the current URL is /, this route is rendered
-          while the rest are ignored */}
-      <Route path="/login" component={Login}>
-        <Login />
-      </Route>
+// views without layouts
+import Landing from "./views/Landing";
+import Profile from "./views/Profile";
+// import Index from "./views/Index";
+import Login from "./components/login";
+import UserList from "./components/UserList";
 
-      <Route path="/register" component={Register}>
-        <Register />
-      </Route>
-      <Route path="/reset-password" component={ResetPassword}>
-        <ResetPassword />
-      </Route>
+function app() {
+    return(
+        // ReactDOM.render(
+          <BrowserRouter>
+            <Switch>
+              {/* add routes with layouts */}
+              <Route path="/admin" component={Admin} />
+              <Route path="/auth" component={Auth} />
+              <Route path="/users/all" component={UserList} />
+              {/* add routes without layouts */}
+              <Route path="/landing" exact component={Landing} />
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/" exact component={Admin} />
 
-      <ProtectedRoute path="/dashboard" component={dashboard}>
-        <ResetPassword />
-      </ProtectedRoute>
-
-      {/* If none of the previous routes render anything,
-          this route acts as a fallback.
-
-          Important: A route with path="/" will *always* match
-          the URL because all URLs begin with a /. So that's
-          why we put this one last of all */}
-      <Route path="/">
-        <Login />
-      </Route>
-    </Switch>
-  </div>
-  );
+              {/* add redirect for first page */}
+              <Redirect from="*" to="/" />
+            </Switch>
+          </BrowserRouter>
+        //   document.getElementById("root")
+        );
 }
 
-export default App;
+export default app

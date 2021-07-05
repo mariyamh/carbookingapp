@@ -10,7 +10,7 @@ export default function Login() {
       history.push('dashboard')
     }
    
-  }, [])
+  }, [history])
   const{ handleChange, submitForm, formData, errors  }= useLoginForm()
   
   const email = useRef<HTMLInputElement>(null)

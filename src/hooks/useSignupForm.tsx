@@ -8,7 +8,7 @@ function useSignupForm() {
       history.push('dashboard')
     }
    
-  }, [])
+  }, [history])
   const [formData, setFormData] = useState({name: "",email: "", password: "", confirmPassword:""})
   const [errors, setErrors] = useState({} as any);
   const validateForm = (data: { name:string ,email: string; password: string,confirmPassword:string; }) => {

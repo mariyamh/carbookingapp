@@ -1,8 +1,14 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useHistory } from 'react-router';
 
 function useLoginForm() {
- 
+  const history = useHistory()
+  useEffect(() => {
+    if(localStorage.getItem('user')){
+      history.push('dashboard')
+    }
+   
+  }, [history])
   const [formData, setFormData] = useState({email: "", password: ""})
   const [errors, setErrors] = useState({} as any);
   const validateForm = (data: { email: string; password: string; }) => {
@@ -28,16 +34,15 @@ function useLoginForm() {
   const submitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setErrors(validateForm(formData))
-    if(errors // 👈 null and undefined check
-      && Object.keys(errors).length === 0 && errors.constructor === Object){
-      console.log('stop')
-
-    }
-    else{ 
-       login(formData);
+    if (Object.keys(errors).length === 0 ) {
+      login(formData);
       console.log('continue submission')
+
+    } else {
+      
+      console.log('stop')
     }
-    
+   
   }
   async function login(data: { email: string; password: string; }) {
          let email= data.email;
@@ -46,18 +51,29 @@ function useLoginForm() {
            email,
            password
          }
-        let result = await fetch("http://:8000/api/login",{
+        let result = await fetch("http://localhost:8000/api/login",{
           method:'POST',
-          headers:{
-            "Content-Type" : "application/json",
-            "Accept": "application/json"
-
-          },
+          headers: {
+         'Content-Type': 'application/json',
+         'Accept':'application/json'
+        },
           body:JSON.stringify(postData)
         })
-        result = await result.json();
-        localStorage.setItem('user',JSON.stringify(result))
+        let resResult = await result.json();
+        console.log(resResult);
+        if(!resResult.data || resResult.data === null || resResult.data === ''){
+          console.log('im empty');
+        }
+        else{
+          console.log(JSON.stringify(resResult))
+        localStorage.setItem('user',JSON.stringify(resResult))
+        
+          history.push('dashboard')
+        
         return result
+        }
+      //  return false;
+       
   }
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     console.log(e.target.name)

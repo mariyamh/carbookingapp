@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router'
 
-function dashboard() {
+function Dashboard() {
+    const history = useHistory()
+    useEffect(() => {
+      if(localStorage.getItem('user')){
+        history.push('dashboard')
+      }
+      else{
+          history.push('login')
+      }
+     
+    }, [history])
+  
     return (
         <div>
             <h1>My dashboard</h1>
@@ -8,4 +20,4 @@ function dashboard() {
     )
 }
 
-export default dashboard
+export default Dashboard
