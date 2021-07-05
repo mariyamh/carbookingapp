@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/css/tailwind.css";
+import ProtectedRoute from "./components/protectedRoutes";
 
 // layouts
 import Admin from "./layouts/admin";
@@ -21,13 +22,13 @@ function app() {
           <BrowserRouter>
             <Switch>
               {/* add routes with layouts */}
-              <Route path="/admin" component={Admin} />
-              <Route path="/auth" component={Auth} />
-              <Route path="/users/all" component={UserList} />
+              <ProtectedRoute path="/admin" component={Admin} />
+              <ProtectedRoute path="/auth" component={Auth} />
+              <ProtectedRoute path="/users/all" component={UserList} />
               {/* add routes without layouts */}
-              <Route path="/landing" exact component={Landing} />
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/" exact component={Admin} />
+              <ProtectedRoute path="/landing" exact component={Landing} />
+              <ProtectedRoute path="/profile" exact component={Profile} />
+              <Route path="/" exact component={Login} />
 
               {/* add redirect for first page */}
               <Redirect from="*" to="/" />
